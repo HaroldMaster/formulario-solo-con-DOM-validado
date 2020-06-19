@@ -3,6 +3,7 @@ h1{
   color: darkblue;
   text-align: center;
 }
+
 @media only screen and (min-width: 750px) {
 
   .box {
@@ -10,40 +11,30 @@ h1{
     color: brown;
     font-size: 20px;
     font-family: Georgia, "Times New Roman", Times, serif;
-    float: left;
     width: 350px;
     height: 400px;
     margin-top: 20px;
-    margin-left: 250PX;
-  }
-}
-@media only screen and (max-width: 750px) {
-  .box {
-    padding: 5px;
-    color: brown;
-    font-size: 20px;
-    font-family: Georgia, "Times New Roman", Times, serif;
     float: left;
-    width: 350px;
-    height: 400px;
+    margin-left: 275px;
+  }
+  .boxshow {
+    border-style: dotted;
+    border-width: 5px;
+    border-color: purple;
+    padding: 30px;
+    font-size: 20px;
+    width: 300px;
+    height: 350px;
+    color: black;
+    margin-top: 20px;
     
-  }
-.boxshow {
-  border-style: dotted;
-  border-width: 5px;
-  border-color: purple;
-  float: left;
-  padding: 30px;
-  font-size: 20px;
-  width: 300px;
-  height: 250px;
-  color: black;
-  }
+    }
 }
+
 @media only screen and (max-width: 750px) {
 .box {
   padding: 5px;
-  color: brown;
+  color:brown;
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
   width: 350px;
