@@ -21,30 +21,31 @@ form.onsubmit = function () {
 };
 divi.appendChild(form);
 
-//Mensaje de error
-let error = document.createElement("p");
-error.innerHTML =
-  "**DATOS INCORRECTOS** (Revise que el nombre, apellido y genero no contenga números y que la edad no contega letras)";
-error.id = "error";
-error.style.display = "none";
-divi.appendChild(error);
 //Arrays que contienen los nombres y ids de los labels e inputs
 let labels = ["label_nombre", "label_apellido", "label_edad", "label_genero"];
 let inner_labels = ["Nombre", "Apellido", "Edad", "Genero"];
 let inputs = ["input_nombre", "input_apellido", "input_edad", "input_genero"];
 var cont = 0; // Contador para agregar un data-id incrementado a los inputs para validar posteriormente los textos y numeros
+var cont_error=0;
 let arr_val = [false, false, false, false]; // Este array contiene un estado que comienza en falso para todos los inputs
 //Funcion para llenar el formulario
 function llenarForm() {
   labels.forEach(function (element, index) {
     element = document.createElement("label");
+    let error = document.createElement("label");
     //Cuando el index es 2 se trata de la edad entonces ponemos la condicion
     if (index == 2) {
       element.innerHTML = "<br>Escriba la " + inner_labels[index] + "<br>";
     } else {
       element.innerHTML = "<br>Escriba el " + inner_labels[index] + "<br>";
     }
+    error.innerHTML="**Datos del "+inner_labels[index]+" incorrectos**";
+    error.id = "e"+cont_error++; // el id no empieza por un numero
+    error.style.color ="red";
+    error.style.fontSize="20px"
+    error.style.display = "none";
     form.appendChild(element);
+    form.appendChild(error);
     //Creamos los inputs por cada etiqueta
     inputs[index] = document.createElement("input");
     inputs[index].dataset.id = cont++;
@@ -122,14 +123,16 @@ function enBlanco(button, p, sub) {
 
 //Validar inputs / SOLO TEXTO - SOLO NUMEROS
 function validar() {
-  inner_labels.forEach(function (element) {
+  inner_labels.forEach(function (element,index) {
     let a = document.querySelector(`#${element}`);
     a.addEventListener("change", function () {
       let reg_let = "^[a-zA-Z]"; //Expresion regular para que comience por una letra
       let reg_num = "[0-9]+"; //Expresion regular para que contenga al menos un numero
       let reg_num_n = "^[0-9]"; //Expresion regular para que comience por un numero
       let reg_let_n = "[a-zA-Z]+"; //Expresion regular para que contenga al menos una letra
-      let ver_error = document.querySelector("#error");
+      //let str = "e"+index;
+      let ver_error = document.querySelector(`#${"e"+index}`);
+      console.log(ver_error+"esto trae");
       //Validacion para solo numeros
       if (a.id == "Edad") {
         console.log("entro en edad");
@@ -139,7 +142,7 @@ function validar() {
             //Si comienza por un numero y no encuentra al menos una letra
             //Se cambia el array de estado por true en la posicion del index.id
             arr_val.splice(a.dataset.id, 1, true);
-            //ver_error.style.display = "none";
+            ver_error.style.display = "none";
             console.log(arr_val);
           } else {
             //Si encuentra letras en el input muestra el parrafo de error
@@ -168,7 +171,7 @@ function validar() {
             //Si comienza por una letra y no encuentra al menos un numero
             //Se cambia el array de estado a true en la posicion del index.id
             arr_val.splice(a.dataset.id, 1, true);
-            // ver_error.style.display = "none";
+            ver_error.style.display = "none";
             console.log(arr_val);
             console.log("Entro aqui true");
           } else {
@@ -194,7 +197,6 @@ function validar() {
         //Se habilita el boton enviar y se oculta el error
         let activar = document.querySelector("#Enviar");
         activar.disabled = false;
-        let ver_error = document.querySelector("#error");
         ver_error.style.display = "none";
       } else {
         //Se vuelve a deshabilitar si un valor esta en falso en el array de estado
