@@ -1,7 +1,7 @@
 "use strict";
 //Titulo
 let titulo = document.createElement("h1");
-titulo.innerHTML = "FORMULARIO VALIDADO 1";
+titulo.innerHTML = "FORMULARIO VALIDADO";
 document.body.appendChild(titulo);
 
 //Primer div
@@ -113,6 +113,8 @@ function enBlanco(button, p, sub) {
     sub.disabled = true;
     sub.style.display = "block";
     div.style.display = "none";
+    let error = document.querySelector("#error");
+    error.style.display = "none";
   });
 }
 
@@ -169,7 +171,8 @@ inner_labels.forEach(function (element) {
       activar.disabled = false;
       let ver_error = document.querySelector("#error");
       ver_error.style.display = "none";
-      //habilitar.disabled=false;
+      //se reinicia en falso 
+      arr_val = [false, false, false, false];
     } else {
       //Se vuelve a deshabilitar si un valor esta en falso en el array de estado
       let activar = document.querySelector("#Enviar");
