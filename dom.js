@@ -32,7 +32,7 @@ let labels = ["label_nombre", "label_apellido", "label_edad", "label_genero"];
 let inner_labels = ["Nombre", "Apellido", "Edad", "Genero"];
 let inputs = ["input_nombre", "input_apellido", "input_edad", "input_genero"];
 var cont = 0; // Contador para agregar un data-id incrementado a los inputs para validar posteriormente los textos y numeros
-
+let arr_val = [false, false, false, false]; // Este array contiene un estado que comienza en falso para todos los inputs
 //Funcion para llenar el formulario
 function llenarForm() {
   labels.forEach(function (element, index) {
@@ -115,12 +115,13 @@ function enBlanco(button, p, sub) {
     div.style.display = "none";
     let error = document.querySelector("#error");
     error.style.display = "none";
+    arr_val = [false, false, false, false]; // se reinicia en falso el array de estado para no tener erres
   });
 }
 
 //Validar inputs / SOLO TEXTO - SOLO NUMEROS
 function validar(){
-let arr_val = [false, false, false, false]; // Este array contiene un estado que comienza en falso para todos los inputs
+
 inner_labels.forEach(function (element) {
   let a = document.querySelector(`#${element}`);
   a.addEventListener("change", function () {
@@ -136,8 +137,18 @@ inner_labels.forEach(function (element) {
           //Si comienza por un numero y no encuentra al menos una letra
           //Se cambia el array de estado por true en la posicion del index.id
           arr_val.splice(a.dataset.id, 1, true);
+          console.log(arr_val);
         }
-      } else {
+        else {
+          //Si encuentra letras en el input muestra el parrafo de error
+          //Volvemos a poner falso debido a que si el primer intento de modificar la edad es correcta pero se vuelve a ingresar un dato falso hay que volver a pasar de estado a false
+          let ver_error = document.querySelector("#error");
+          ver_error.style.display = "block";
+          arr_val.splice(a.dataset.id, 1, false);
+          console.log("datasetid: " + a.dataset.id);
+          console.log(arr_val);
+        }
+      }/* else {
         //Si encuentra letras en el input muestra el parrafo de error
         //Volvemos a poner falso debido a que si el primer intento de modificar la edad es correcta pero se vuelve a ingresar un dato falso hay que volver a pasar de estado a false
         let ver_error = document.querySelector("#error");
@@ -145,23 +156,40 @@ inner_labels.forEach(function (element) {
         arr_val.splice(a.dataset.id, 1, false);
         console.log("datasetid: " + a.dataset.id);
         console.log(arr_val);
-      }
+      }*/
     } else {
       //Validacion solo letras
+      console.log("entro a letras"+" "+typeof a.value);
       if (a.value.match(reg_let)) {
+        console.log("entro al primer if letras");
         let num = a.value.match(reg_num);
         if (num == null) {
+          console.log("entro al segundo if numeros");
           //Si comienza por una letra y no encuentra al menos un numero
           //Se cambia el array de estado a true en la posicion del index.id
           arr_val.splice(a.dataset.id, 1, true);
+          console.log(arr_val);
+          console.log("Entro aqui true");
         }
-      } else {
+        else {
+          //Muestra el mensaje de error su encontro al menos un numero
+          //Se pone el valor del array de estado nuevamente en falso 
+          let ver_error = document.querySelector("#error");
+          ver_error.style.display = "block";
+          arr_val.splice(a.dataset.id, 1, false);
+          console.log(arr_val);
+          console.log("Entro aqui else");
+        }
+
+      } /*else {
         //Muestra el mensaje de error su encontro al menos un numero
         //Se pone el valor del array de estado nuevamente en falso 
         let ver_error = document.querySelector("#error");
         ver_error.style.display = "block";
         arr_val.splice(a.dataset.id, 1, false);
-      }
+        console.log(arr_val);
+        console.log("Entro aqui falso");
+      }*/
     }
     //Si en el array se encuentra sin valores falsos, se puede enviar el formulario
     let array_validator = arr_val.indexOf(false);
@@ -171,8 +199,7 @@ inner_labels.forEach(function (element) {
       activar.disabled = false;
       let ver_error = document.querySelector("#error");
       ver_error.style.display = "none";
-      //se reinicia en falso 
-      arr_val = [false, false, false, false];
+      
     } else {
       //Se vuelve a deshabilitar si un valor esta en falso en el array de estado
       let activar = document.querySelector("#Enviar");
