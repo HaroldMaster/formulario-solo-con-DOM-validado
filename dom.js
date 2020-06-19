@@ -1,7 +1,7 @@
 "use strict";
 //Titulo
 let titulo = document.createElement("h1");
-titulo.innerHTML = "FORMULARIO VALIDADO";
+titulo.innerHTML = "FORMULARIO VALIDADO 1";
 document.body.appendChild(titulo);
 
 //Primer div
