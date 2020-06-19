@@ -39,6 +39,17 @@ h1{
   margin-top: 20px;
   margin-left: 250PX;
 }
+.boxshow {
+  border-style: dotted;
+  border-width: 5px;
+  border-color: purple;
+  float: left;
+  padding: 30px;
+  font-size: 20px;
+  width: 300px;
+  height: 250px;
+  color: black;
+  }
 }
 @media only screen and (max-width: 750px) {
 .box {
@@ -49,8 +60,19 @@ h1{
   float: left;
   width: 350px;
   height: 400px;
-  
 }
+.boxshow {
+  border-style: dotted;
+  border-width: 5px;
+  border-color: purple;
+  float: left;
+  padding: 30px;
+  font-size: 20px;
+  width: 300px;
+  height: 350px;
+  color: black;
+  margin-top: 20px;
+  }
 }
 
 label,
@@ -60,17 +82,7 @@ line-height: 40px;
 form {
 margin-top: -40px;
 }
-.boxshow {
-border-style: dotted;
-border-width: 5px;
-border-color: purple;
-float: left;
-padding: 30px;
-font-size: 20px;
-width: 300px;
-height: 250px;
-color: black;
-}
+
 .submit,
 button {
 margin: 8px;
