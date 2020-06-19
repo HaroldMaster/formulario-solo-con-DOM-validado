@@ -26,7 +26,7 @@ let labels = ["label_nombre", "label_apellido", "label_edad", "label_genero"];
 let inner_labels = ["Nombre", "Apellido", "Edad", "Genero"];
 let inputs = ["input_nombre", "input_apellido", "input_edad", "input_genero"];
 var cont = 0; // Contador para agregar un data-id incrementado a los inputs para validar posteriormente los textos y numeros
-var cont_error=0;
+var cont_error = 0;
 let arr_val = [false, false, false, false]; // Este array contiene un estado que comienza en falso para todos los inputs
 //Funcion para llenar el formulario
 function llenarForm() {
@@ -39,10 +39,11 @@ function llenarForm() {
     } else {
       element.innerHTML = "<br>Escriba el " + inner_labels[index] + "<br>";
     }
-    error.innerHTML="**Datos del "+inner_labels[index]+" incorrectos**";
-    error.id = "e"+cont_error++; // el id no empieza por un numero
-    error.style.color ="red";
-    error.style.fontSize="20px"
+    error.innerHTML = "**Datos del " + inner_labels[index] + " incorrectos**";
+    error.id = "e" + cont_error++; // el id no empieza por un numero
+    error.className = "error";
+    error.style.color = "red";
+    error.style.fontSize = "20px";
     error.style.display = "none";
     form.appendChild(element);
     form.appendChild(error);
@@ -115,15 +116,18 @@ function enBlanco(button, p, sub) {
     sub.disabled = true;
     sub.style.display = "block";
     div.style.display = "none";
-    let error = document.querySelector("#error");
-    error.style.display = "none";
     arr_val = [false, false, false, false]; // se reinicia en falso el array de estado para no tener erres
+    var x, i;
+    x = document.querySelectorAll(".error");
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none";
+    }
   });
 }
 
 //Validar inputs / SOLO TEXTO - SOLO NUMEROS
 function validar() {
-  inner_labels.forEach(function (element,index) {
+  inner_labels.forEach(function (element, index) {
     let a = document.querySelector(`#${element}`);
     a.addEventListener("change", function () {
       let reg_let = "^[a-zA-Z]"; //Expresion regular para que comience por una letra
@@ -131,8 +135,8 @@ function validar() {
       let reg_num_n = "^[0-9]"; //Expresion regular para que comience por un numero
       let reg_let_n = "[a-zA-Z]+"; //Expresion regular para que contenga al menos una letra
       //let str = "e"+index;
-      let ver_error = document.querySelector(`#${"e"+index}`);
-      console.log(ver_error+"esto trae");
+      let ver_error = document.querySelector(`#${"e" + index}`);
+      console.log(ver_error + "esto trae");
       //Validacion para solo numeros
       if (a.id == "Edad") {
         console.log("entro en edad");
