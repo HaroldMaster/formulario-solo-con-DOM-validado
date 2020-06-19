@@ -1,0 +1,75 @@
+h1{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: darkblue;
+    text-align: center;
+}
+.box {
+  padding: 5px;
+  color: brown;
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  float: left;
+  width: 350px;
+  height: 400px;
+  margin-top: 20px;
+  margin-left: 250PX;
+}
+label,
+p {
+  line-height: 40px;
+}
+form {
+  margin-top: -40px;
+}
+.boxshow {
+  border-style: dotted;
+  border-width: 5px;
+  border-color: purple;
+  float: left;
+  padding: 30px;
+  font-size: 20px;
+  width: 300px;
+  height: 250px;
+  color: black;
+}
+.submit,
+button {
+  margin: 8px;
+}
+#error {
+  color: red;
+  font-size: 13px;
+}
+
+input.submit:disabled {
+  border-radius: 4px;
+  background-color: gray;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  height: 70px;
+  cursor: pointer;
+  margin: 15px;
+}
+input.submit:enabled,
+button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  height: 70px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+input {
+  border-radius: 5px;
+  width: 300px;
+  height: 30px;
+}
