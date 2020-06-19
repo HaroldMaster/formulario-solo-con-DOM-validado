@@ -3,17 +3,32 @@ h1{
     color: darkblue;
     text-align: center;
 }
-.box {
-  padding: 5px;
-  color: brown;
-  font-size: 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  float: left;
-  width: 350px;
-  height: 400px;
-  margin-top: 20px;
-  margin-left: 250PX;
+@media only screen and (min-width: 750px) {
+  .box {
+    padding: 5px;
+    color: brown;
+    font-size: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    float: left;
+    width: 350px;
+    height: 400px;
+    margin-top: 20px;
+    margin-left: 250PX;
+  }
 }
+@media only screen and (max-width: 750px) {
+  .box {
+    padding: 5px;
+    color: brown;
+    font-size: 20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    float: left;
+    width: 350px;
+    height: 400px;
+    
+  }
+}
+
 label,
 p {
   line-height: 40px;
@@ -72,4 +87,7 @@ input {
   border-radius: 5px;
   width: 300px;
   height: 30px;
+}
+* {
+  box-sizing: border-box;
 }
