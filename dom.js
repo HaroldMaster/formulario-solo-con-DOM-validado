@@ -24,7 +24,7 @@ divi.appendChild(form);
 //Mensaje de error
 let error = document.createElement("p");
 error.innerHTML =
-  "**DATOS INCORRECTOS** (Revise que el nombre no contenga números y que la edad no contega letras)";
+  "**DATOS INCORRECTOS** (Revise que el nombre, apellido y genero no contenga números y que la edad no contega letras)";
 error.id = "error";
 error.style.display = "none";
 divi.appendChild(error);
@@ -139,7 +139,7 @@ function validar() {
             //Si comienza por un numero y no encuentra al menos una letra
             //Se cambia el array de estado por true en la posicion del index.id
             arr_val.splice(a.dataset.id, 1, true);
-            ver_error.style.display = "none";
+            //ver_error.style.display = "none";
             console.log(arr_val);
           } else {
             //Si encuentra letras en el input muestra el parrafo de error
@@ -168,7 +168,7 @@ function validar() {
             //Si comienza por una letra y no encuentra al menos un numero
             //Se cambia el array de estado a true en la posicion del index.id
             arr_val.splice(a.dataset.id, 1, true);
-            ver_error.style.display = "none";
+            // ver_error.style.display = "none";
             console.log(arr_val);
             console.log("Entro aqui true");
           } else {
