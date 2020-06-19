@@ -28,17 +28,6 @@ h1{
     height: 400px;
     
   }
-.box {
-  padding: 5px;
-  color: brown;
-  font-size: 20px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  float: left;
-  width: 350px;
-  height: 400px;
-  margin-top: 20px;
-  margin-left: 250PX;
-}
 .boxshow {
   border-style: dotted;
   border-width: 5px;
@@ -57,7 +46,6 @@ h1{
   color: brown;
   font-size: 20px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  float: left;
   width: 350px;
   height: 400px;
 }
@@ -65,7 +53,6 @@ h1{
   border-style: dotted;
   border-width: 5px;
   border-color: purple;
-  float: left;
   padding: 30px;
   font-size: 20px;
   width: 300px;
